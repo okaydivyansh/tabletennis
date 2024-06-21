@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<br lang="en">
+<head>
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table tennis</title>
+    <style>
+        .winner{
+            color:green;
+        }
+        .loser{
+            color: red;
+        }
+        body{
+            text-align:center;
+        }
+        #play{
+            padding:2px;
+        }
+        #all{
+            border: 2px solid black;
+            padding:5px;
+            margin-left: 500px;
+            margin-right: 500px;
+            background-color: darkgrey;
+        }
+       
+    </style>
+</head>
+<body >
+<br>
+<div id="all">
+    <img src="download.jpeg" width="400px" style="border:2px solid black">
+    <h1 text-align="center">SCORE KEEPER</h1></br>
+    <h2 text-align="center"><span id="p1" >0</span> to <span id="p2" >0</span></h2>
+    <p>use the buttons below to keep score</p>
+    <div id="play"><b>Playing To: </b><select id='hahah'>
+                          <option value="-">--</option>
+                          <option value="1" >1</option>
+                          <option value="2" >2</option>
+                          <option value="3" >3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+    </select> </div></br>
+    <button id="b1" onclick="func1()" type="button" class="btn btn-dark">PLAYER ONE</button>
+    <button id="b2" onclick="func2()" type="button" class="btn btn-dark">PLAYER TWO</button>
+    <button id="reset" onclick="Reset()" type="button" class="btn btn-dark"> RESET</button>
+</div>  
+<script>
+    let winningscore=3;
+    var gameover=false;
+    var x=document.querySelector('#hahah');
+    x.addEventListener('change',function()
+    {
+        winningscore=parseInt(this.value);
+    })
+    
+    let count1=0;
+    
+    
+    function func1()
+    {
+        if(gameover!=true)
+        {
+            count1+=1;
+            if(count1===winningscore)
+            {
+                gameover=true;
+                document.getElementById("p1").classList.add('winner');
+                document.getElementById("p2").classList.add('loser');
+            }
+            document.getElementById("p1").textContent=count1;
+
+        }
+       
+    }
+    let count2=0;
+    function func2()
+    {
+        if(gameover!=true)
+        {
+
+            count2+=1;
+            if(count2===winningscore)
+            {
+                gameover=true;
+                document.getElementById("p2").classList.add('winner');
+                document.getElementById("p1").classList.add('loser');
+                
+            }
+            document.getElementById("p2").textContent=count2;
+        }
+    }
+    document.getElementById('reset').addEventListener('click',function()
+    {
+        count1=0;
+        count2=0;
+        document.getElementById("p1").textContent=0;
+        document.getElementById("p2").textContent=0;
+        document.getElementById("p1").classList.remove('winner','loser');
+        document.getElementById("p2").classList.remove('winner','loser');
+        gameover=false;
+    })
+    
+</script>
+</body>
+</html>
